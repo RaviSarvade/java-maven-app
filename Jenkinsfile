@@ -24,7 +24,7 @@ pipeline {
         }
         stage ("tesing") {
             steps {
-                echo "its in testing stage..."
+                echo "its in testing stage"
                 
             }
         }     
