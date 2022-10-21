@@ -15,7 +15,7 @@ pipeline {
         stage ("building docker image") {
             steps {
                 
-                WithCredentials ([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER' )]) {
+                WithCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER' )]) {
                     sh "docker build -t nobleaces9/my-repo:v6 ."
                     sh "echo $PASS | docker login -u $USER --password-stdin"
                     sh "docker push nobleaces9/my-repo:v6"                  
