@@ -14,7 +14,7 @@ pipeline {
         }
         stage ("building docker image") {
             steps {
-                #echo "its in testing stage"
+                
                 WithCredentials ([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER' )]) {
                     sh "docker build -t nobleaces9/my-repo:v6 ."
                     sh "echo $PASS | docker login -u $USER --password-stdin"
