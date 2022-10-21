@@ -2,21 +2,30 @@
 
 pipeline {
     agent any
+    tools {
+        maven 'Maven'
+    }
     stages {
         stage ("building") {
             steps {
                 echo "its in building stage"
-            }
-            
+                sh "mvn package"
+            }            
         }
-        stage ("testing") {
+        stage ("building docker image") {
             steps {
                 echo "its in testing stage"
+                WithCredentials ([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER' )]) {
+                    sh "docker build -t nobleaces9/my-repo:v6 ."
+                    sh "echo $PASS | docker login -u $USER --password-stdin"
+                    sh "docker push nobleaces9/my-repo:v6"                  
+                }
             }
         }
-        stage ("deploying") {
+        stage ("tesing") {
             steps {
-                echo "its in deploying stage"
+                echo "its in testing stage"
+                
             }
         }     
     }
