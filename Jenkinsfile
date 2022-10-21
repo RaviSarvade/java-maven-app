@@ -11,4 +11,6 @@ pipeline {
         stage ("deploying") {
             echo "its deploying stage"
          
-        }              
+        }     
+    }
+}
