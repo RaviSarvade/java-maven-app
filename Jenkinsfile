@@ -3,14 +3,20 @@
 pipeline {
     stages {
         stage ("building") {
-            echo "its in building stage"
+            steps {
+                echo "its in building stage"
+            }
+            
         }
         stage ("testing") {
-            echo "its in tetsing phase"
+            steps {
+                echo "its in testing stage"
+            }
         }
         stage ("deploying") {
-            echo "its deploying stage"
-         
+            steps {
+                echo "its in deploying stage"
+            }
         }     
     }
 }
