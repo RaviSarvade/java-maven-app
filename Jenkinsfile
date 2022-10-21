@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage ("building") {
             steps {
-                echo "its in building stage"
+                echo "its in building stage."
                 sh "mvn package"
             }            
         }
